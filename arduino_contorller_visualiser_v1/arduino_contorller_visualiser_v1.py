@@ -309,5 +309,5 @@ while not_quit:
             
             time.sleep(1)
             
-serialInst.close()
+
 
