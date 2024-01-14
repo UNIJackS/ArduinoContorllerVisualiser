@@ -18,6 +18,12 @@ clock = pygame.time.Clock()
 
 pygame.font.init()
 
+pygame.display.set_caption('Arduino Contorller Visualiser v1')
+
+Icon = pygame.image.load('controller_image.png')
+
+pygame.display.set_icon(Icon)
+
 # This command creates a display object of the size defined by the
 # INITAL_SCREEN_WIDTH and INITAL_SCREEN_HEIGHT variables.
 screen = pygame.display.set_mode((INITAL_SCREEN_WIDTH, INITAL_SCREEN_HEIGHT))
@@ -293,11 +299,13 @@ while not_quit:
                 except serial.SerialException:
                     
                     device_connected = False
-                
+        
+        except serial.SerialException:
+            device_connected = False
+
         except UnicodeDecodeError:
             
             num_of_connectons_failed +=1
-            
             
             time.sleep(1)
             
